@@ -2,10 +2,10 @@ import express from 'express';
 import { getAllBooks } from '../controllers/bookController.js';
 
 
-const bookRouter = express.Router()
+const bookRouter = express.Router();
 
-bookRouter.get('/', getAllBooks)
-// router.post
+bookRouter.get('/', getAllBooks);
+// bookRouter.put('/:id', updateBook);
 // router.delete
 // router.edit
 
