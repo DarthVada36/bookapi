@@ -4,7 +4,7 @@ import express, { request } from 'express';
 import bookRouter from "./routers/routes.js";
 import cors from 'cors';
 
-const app = express()
+export const app = express()
 
 
 app.use (cors ())
@@ -26,6 +26,6 @@ try {
     console.error('Unable to connect to the database:', error);
     }
 
-app.listen(8000, ()=> {
+export const server = app.listen(8000, ()=> {
     console.log('Server is working, nice job :) http://localhost:8000')
 })
