@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 const connection_db = new Sequelize(
     'book_app',
     'root',
-    'Pikachu2609>v', {
+    'paswordxD', {
     host: 'localhost',
     dialect: 'mysql',
     define: 
