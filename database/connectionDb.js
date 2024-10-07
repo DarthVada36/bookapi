@@ -1,9 +1,13 @@
 import { Sequelize } from "sequelize";
+import dotenv from 'dotenv';
+
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 const connection_db = new Sequelize(
-    'book_app',
-    'root',
-    'paswordxD', {
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql',
     define: 
@@ -13,3 +17,4 @@ const connection_db = new Sequelize(
     });
 
 export default connection_db
+
