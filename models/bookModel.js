@@ -17,10 +17,9 @@ const bookModel = connection_db.define(
         type: DataTypes.STRING,
         allowNull: false
         },
-    },
-    {
-        timestamps: false
-    },
-    );
+    },{
+        tableName: 'books', // Asegúrate de que el nombre de la tabla es correcto
+        timestamps: false, // Esto es opcional, según tu modelo
+    });
 
 export default bookModel;

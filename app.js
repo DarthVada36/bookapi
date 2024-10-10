@@ -9,9 +9,9 @@ export const app = express()
 
 app.use (cors ())
 app.use (express.json())
-app.get ('/hola', (req, resp) =>{
-    resp.send('Hola primera API')
-})
+app.get ('/', (req, res) =>{
+    res.send('Hola primera API')
+});
 
 app.use('/book', bookRouter)
 

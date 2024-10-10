@@ -5,16 +5,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const connection_db = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD, {
-    host: 'localhost',
-    dialect: 'mysql',
-    define: 
-        {
-            timestamps: false,
+    process.env.DB_DATABASE,   // Nombre de la base de datos
+    process.env.DB_USERNAME,   // Nombre de usuario
+    process.env.DB_PASSWORD,   // Contraseña
+    {
+        host: process.env.DB_HOST,     // Host de la base de datos
+        dialect: process.env.DB_DIALECT, // Dialecto (mysql, postgres, etc.)
+        define: {
+            timestamps: false,  // Desactivar timestamps globalmente
         }
-    });
+    }
+);
 
-export default connection_db
+export default connection_db;
+
 
