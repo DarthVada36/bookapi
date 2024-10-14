@@ -11,6 +11,31 @@ describe("CRUD books", () => {
         expect(response.headers["content-type"]).toContain("application/json");
     });
 
+    //GET BOOK BY ID
+    // GET BOOK BY ID
+    test('should get a book by ID', async () => {
+        // Primero, crear un libro para poder obtenerlo por ID
+        const bookData = {
+            bookTitle: "Fundación",
+            authorName: "Isaac Asimov",
+            bookSinopsis: "Una historia épica sobre la caída de un imperio galáctico.",
+        };
+        const createResponse = await request(app).post('/book').send(bookData);
+        const bookId = createResponse.body.id;
+
+        // Hacer una petición GET para obtener el libro por ID
+        const getResponse = await request(app).get(`/book/${bookId}`);
+
+        // Verificar que la respuesta sea 200 OK
+        expect(getResponse.statusCode).toBe(200);
+
+        // Verificar que los datos obtenidos coincidan con los datos del libro creado
+        expect(getResponse.body.bookTitle).toBe(bookData.bookTitle);
+        expect(getResponse.body.authorName).toBe(bookData.authorName);
+        expect(getResponse.body.bookSinopsis).toBe(bookData.bookSinopsis);
+        expect(getResponse.body.id).toBe(bookId);  // Verificamos que el ID sea el mismo
+    });
+
     // POST BOOK
     test('should create a book', async () => {
         const bookData = {

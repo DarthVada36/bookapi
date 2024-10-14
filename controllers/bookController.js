@@ -11,7 +11,24 @@ export const getAllBooks = async(req,res) => {
         console.error('Error al obtener los libros:', error);
         res.json({message: error.message});
         }
-} 
+}
+
+//TEST GET BOOK BY ID
+export const getBookById = async(req,res) => {
+    try {
+        const {id} = req.params;
+        const book = await bookModel.findByPk(id);
+        if (!book) {
+            return res.status(404).json({message: 'Libro no encontrado'});
+        }
+        res.json(book);
+        }
+        catch (error)
+        {
+        console.error('Error al obtener el libro:', error);
+        res.json({message: error.message});
+    }
+}
 
 //TEST POST BOOK
 export const postBook = async(req,res) => {
