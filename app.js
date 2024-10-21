@@ -3,6 +3,8 @@ import bookModel from "./models/bookModel.js";
 import express, { request } from 'express';
 import bookRouter from "./routers/routes.js";
 import cors from 'cors';
+import userModel from "./models/userModel.js";
+import authRouter from "./routers/authRoutes.js";
 
 export const app = express()
 
@@ -14,12 +16,16 @@ app.get ('/', (req, res) =>{
 });
 
 app.use('/book', bookRouter)
+app.use('/auth', authRouter)
 
 try {
     await connection_db.authenticate();
     console.log('Connection has been established successfully.');
 
-    await bookModel.sync({ force: true });
+    await bookModel.sync({ force: false });
+    console.log('The table for the Book model was just (re)created!');
+
+    await userModel.sync({ force: false });
     console.log('The table for the User model was just (re)created!');
     
         } catch (error) {

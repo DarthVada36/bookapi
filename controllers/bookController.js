@@ -73,8 +73,7 @@ export const updateBook = async(req,res) => {
     try {
         const {id} = req.params;
         const {bookTitle, authorName, bookSinopsis} = req.body;
-        const book = await bookModel.
-        findByPk(id);
+        const book = await bookModel.findByPk(id);
         if (!book) {
             return res.status(404).json({message: 'Libro no encontrado'});
         }
@@ -87,6 +86,6 @@ export const updateBook = async(req,res) => {
         catch (error)
         {
         console .error('Error al actualizar el libro:', error);
-        res.json({message: error.message});
+        res.json({message: 'No se pudo actualizar el libro 🎃'});
         }
 }
